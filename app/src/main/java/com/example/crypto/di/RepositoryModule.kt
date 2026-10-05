@@ -1,8 +1,25 @@
-package com.example.crypto.domain.repository
+package com.example.crypto.di
 
-import com.example.crypto.domain.model.Coin
+import com.example.crypto.data.repository.CoinRepositoryImpl
+import com.example.crypto.data.repository.KeyInfoRepositoryImpl
+import com.example.crypto.domain.repository.CoinRepository
+import com.example.crypto.domain.repository.KeyInfoRepository
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
-interface CoinRepository {
-    suspend fun getCoinList(): Result<List<Coin>>
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class RepositoryModule {
+
+    @Binds
+    abstract fun bindCoinRepository(
+        impl: CoinRepositoryImpl
+    ): CoinRepository
+
+    @Binds
+    abstract fun bindKeyInfoRepository(
+        impl: KeyInfoRepositoryImpl
+    ): KeyInfoRepository
 }
-

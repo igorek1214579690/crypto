@@ -6,7 +6,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -20,11 +19,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.crypto.presentation.coinlist.CoinListScreen
-import com.example.crypto.presentation.favorites.FavoritesScreen
+import com.example.crypto.presentation.keyinfo.KeyInfoScreen
 import com.example.crypto.presentation.navigation.BottomNavItem
 import com.example.crypto.ui.theme.CryptoTheme
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
+import androidx.compose.foundation.layout.padding
 
 @HiltAndroidApp
 class MyApp : Application()
@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 @androidx.compose.runtime.Composable
 fun MainScreen() {
     val navController = rememberNavController()
-    val items = listOf(BottomNavItem.CoinList, BottomNavItem.Favorites)
+    val items = listOf(BottomNavItem.CoinList, BottomNavItem.KeyInfo)
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -81,8 +81,8 @@ fun MainScreen() {
             composable(BottomNavItem.CoinList.route) {
                 CoinListScreen()
             }
-            composable(BottomNavItem.Favorites.route) {
-                FavoritesScreen()
+            composable(BottomNavItem.KeyInfo.route) {
+                KeyInfoScreen()
             }
         }
     }

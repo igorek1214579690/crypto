@@ -1,7 +1,7 @@
 package com.example.crypto.presentation.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -16,9 +16,9 @@ sealed class BottomNavItem(
         icon = Icons.Filled.List
     )
 
-    data object Favorites : BottomNavItem(
-        route = "favorites",
-        label = "Избранное",
-        icon = Icons.Filled.Favorite
+    data object KeyInfo : BottomNavItem(
+        route = "key_info",
+        label = "О ключе",
+        icon = Icons.Filled.Info
     )
 }
