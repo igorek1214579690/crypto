@@ -7,6 +7,7 @@ fun KeyInfoResponseDto.toDomain(): KeyInfo {
     return KeyInfo(
         creditLimitDaily = data.plan.creditLimitDaily,
         creditLimitMonthly = data.plan.creditLimitMonthly,
+        creditLimitMonthlyReset = data.plan.creditLimitMonthlyReset,
         creditsUsedToday = data.usage.currentDay?.creditsUsed,
         creditsLeftToday = data.usage.currentDay?.creditsLeft,
         creditsUsedMonth = data.usage.currentMonth?.creditsUsed,

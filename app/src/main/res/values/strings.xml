@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Crypto</string>
+
+    <!-- Common -->
+    <string name="value_placeholder">—</string>
+    <string name="error_message">Error: %1$s</string>
+
+    <!-- Navigation -->
+    <string name="nav_coins">Coins</string>
+    <string name="nav_key_info">Key info</string>
+
+    <!-- Coin list -->
+    <string name="coin_name_symbol">%1$s (%2$s)</string>
+    <string name="coin_price_usd">$%1$s</string>
+    <string name="coin_percent_change">%1$s%%</string>
+
+    <!-- Key info (About) -->
+    <string name="key_info_monthly_reset">Credit limit monthly reset: %1$s</string>
+    <string name="key_info_monthly_limit">Credit monthly limit: %1$s</string>
+    <string name="key_info_current_day">Current day:</string>
+    <string name="key_info_current_month">Current month:</string>
+    <string name="key_info_credits_used">Credits used: %1$s</string>
+    <string name="key_info_credits_left">Credits left: %1$s</string>
 </resources>

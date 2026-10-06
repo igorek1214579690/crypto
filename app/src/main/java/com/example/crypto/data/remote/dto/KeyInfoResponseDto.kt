@@ -18,6 +18,7 @@ data class KeyInfoDataDto(
 data class PlanDto(
     @param:Json(name = "credit_limit_daily") val creditLimitDaily: Int?,
     @param:Json(name = "credit_limit_monthly") val creditLimitMonthly: Int?,
+    @param:Json(name = "credit_limit_monthly_reset") val creditLimitMonthlyReset: String?,
     @param:Json(name = "rate_limit_minute") val rateLimitMinute: Int?
 )
 
