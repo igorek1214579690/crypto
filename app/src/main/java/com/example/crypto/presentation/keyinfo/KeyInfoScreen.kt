@@ -67,7 +67,7 @@ private fun KeyInfoContent(info: KeyInfo) {
             )
         )
         LabelText(stringResource(R.string.key_info_monthly_limit, info.creditLimitMonthly.orDash()))
-
+        
         Spacer(modifier = Modifier.height(8.dp))
         SectionTitle(stringResource(R.string.key_info_current_day))
         UsageRow(used = info.creditsUsedToday, left = info.creditsLeftToday)

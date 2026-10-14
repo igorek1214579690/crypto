@@ -22,7 +22,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.crypto.presentation.coinlist.CoinDetailScreen
+
 import com.example.crypto.presentation.coinlist.CoinListScreen
 import com.example.crypto.presentation.keyinfo.KeyInfoScreen
 import com.example.crypto.presentation.navigation.BottomNavItem
@@ -87,23 +87,16 @@ fun MainScreen() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(BottomNavItem.CoinList.route) {
-                CoinListScreen(onCoinClick = { id ->
-                    navController.navigate("coin_detail/$id")
-                })
+                CoinListScreen()
             }
             composable(BottomNavItem.KeyInfo.route) {
                 KeyInfoScreen()
             }
-            composable(
-                route = "coin_detail/{coinId}",
-                arguments = listOf(navArgument("coinId") { type = NavType.IntType })
-            ) { backStackEntry ->
-                val coinId = backStackEntry.arguments?.getInt("coinId") ?: return@composable
-                CoinDetailScreen(
-                    coinId = coinId,
-                    onBack = { navController.popBackStack() }
-                )
+
+
+
+
+
             }
         }
     }
-}

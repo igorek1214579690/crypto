@@ -35,7 +35,7 @@ fun formatCompactNumber(value: Double?): String {
 }
 
 fun formatPercent(value: Double?): String {
-    if (value == null) return "—"
+    if (value == null) return ""
     val sign = if (value >= 0) "+" else ""
-    return String.format(Locale.US, "%s%.2f%%", sign, value)
+    return String.format(Locale.US, "%s%.2f", sign, value)
 }
