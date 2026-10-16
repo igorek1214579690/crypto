@@ -30,4 +30,22 @@
     <string name="key_info_current_month">Current month:</string>
     <string name="key_info_credits_used">Credits used: %1$s</string>
     <string name="key_info_credits_left">Credits left: %1$s</string>
+
+    <!-- Market -->
+    <string name="market_title">Market</string>
+    <string name="market_fear_greed">Fear and greed index</string>
+    <string name="market_fear_greed_history">Last %1$d days</string>
+    <string name="market_total_cap">Total market cap</string>
+    <string name="market_volume_24h">Volume 24h</string>
+    <string name="market_dominance">Dominance</string>
+    <string name="market_dominance_btc">BTC %1$s%%</string>
+    <string name="market_dominance_eth">ETH %1$s%%</string>
+    <string name="market_dominance_other">Other %1$s%%</string>
+    <string name="market_altseason">Altcoin season index</string>
+    <string name="market_altseason_value">%1$d / 100</string>
+    <string name="market_bitcoin_season">Bitcoin season</string>
+    <string name="market_altcoin_season">Altcoin season</string>
+    <string name="market_active_coins">Active coins</string>
+    <string name="market_exchanges">Exchanges</string>
+    <string name="nav_market">Market</string>
 </resources>

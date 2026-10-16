@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.PieChart
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.crypto.R
 
@@ -16,6 +17,12 @@ sealed class BottomNavItem(
         route = "coin_list",
         labelRes = R.string.nav_coins,
         icon = Icons.Filled.List
+    )
+
+    data object Market : BottomNavItem(
+        route = "market",
+        labelRes = R.string.nav_market,
+        icon = Icons.Filled.PieChart
     )
 
     data object KeyInfo : BottomNavItem(

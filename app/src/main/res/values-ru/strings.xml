@@ -30,4 +30,22 @@
     <string name="key_info_current_month">Этот месяц:</string>
     <string name="key_info_credits_used">Использовано кредитов: %1$s</string>
     <string name="key_info_credits_left">Осталось кредитов: %1$s</string>
+
+    <!-- Market -->
+    <string name="market_title">Рынок</string>
+    <string name="market_fear_greed">Индекс страха и жадности</string>
+    <string name="market_fear_greed_history">Последние %1$d дней</string>
+    <string name="market_total_cap">Общая капитализация</string>
+    <string name="market_volume_24h">Объём за 24ч</string>
+    <string name="market_dominance">Доминирование</string>
+    <string name="market_dominance_btc">BTC %1$s%%</string>
+    <string name="market_dominance_eth">ETH %1$s%%</string>
+    <string name="market_dominance_other">Другие %1$s%%</string>
+    <string name="market_altseason">Индекс альтсезона</string>
+    <string name="market_altseason_value">%1$d / 100</string>
+    <string name="market_bitcoin_season">Биткоин-сезон</string>
+    <string name="market_altcoin_season">Альт-сезон</string>
+    <string name="market_active_coins">Активных монет</string>
+    <string name="market_exchanges">Бирж</string>
+    <string name="nav_market">Рынок</string>
 </resources>
