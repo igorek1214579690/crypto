@@ -1,9 +1,11 @@
 package com.example.crypto.di
 
 import com.example.crypto.data.repository.CoinRepositoryImpl
+import com.example.crypto.data.repository.ConversionRepositoryImpl
 import com.example.crypto.data.repository.KeyInfoRepositoryImpl
 import com.example.crypto.data.repository.MarketRepositoryImpl
 import com.example.crypto.domain.repository.CoinRepository
+import com.example.crypto.domain.repository.ConversionRepository
 import com.example.crypto.domain.repository.KeyInfoRepository
 import com.example.crypto.domain.repository.MarketRepository
 import dagger.Binds
@@ -23,4 +25,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindMarketRepository(impl: MarketRepositoryImpl): MarketRepository
+
+    @Binds
+    abstract fun bindConversionRepository(impl: ConversionRepositoryImpl): ConversionRepository
 }

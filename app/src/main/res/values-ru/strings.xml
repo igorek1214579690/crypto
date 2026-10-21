@@ -48,4 +48,16 @@
     <string name="market_active_coins">Активных монет</string>
     <string name="market_exchanges">Бирж</string>
     <string name="nav_market">Рынок</string>
+
+    <!-- Convert -->
+    <string name="nav_convert">Конвертер</string>
+    <string name="convert_title">Конвертер</string>
+    <string name="convert_you_have">У вас</string>
+    <string name="convert_you_get">Вы получите</string>
+    <string name="convert_same_amount_in">То же количество в</string>
+    <string name="convert_choose_coin">Выберите монету</string>
+    <string name="convert_search_placeholder">Поиск</string>
+    <string name="convert_enter_number">Введите число</string>
+    <string name="convert_rate_line">1 %1$s = %2$s</string>
+    <string name="convert_credits_note">Курсы стоят %1$d кредитов API при каждом выборе монеты или обновлении. Изменение суммы бесплатно.</string>
 </resources>

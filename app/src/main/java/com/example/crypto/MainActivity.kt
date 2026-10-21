@@ -28,6 +28,7 @@ import com.example.crypto.presentation.navigation.BottomNavItem
 import com.example.crypto.ui.theme.CryptoTheme
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
+import com.example.crypto.presentation.convert.ConvertScreen
 
 @HiltAndroidApp
 class MyApp : Application()
@@ -48,7 +49,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-    val items = listOf(BottomNavItem.CoinList, BottomNavItem.Market, BottomNavItem.KeyInfo)
+    val items = listOf(BottomNavItem.CoinList, BottomNavItem.Market,  BottomNavItem.Convert,  BottomNavItem.KeyInfo)
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -84,8 +85,13 @@ fun MainScreen() {
             composable(BottomNavItem.CoinList.route) {
                 CoinListScreen()
             }
+
             composable(BottomNavItem.Market.route) {
                 MarketScreen()
+            }
+
+            composable(BottomNavItem.Convert.route) {
+                ConvertScreen()
             }
             composable(BottomNavItem.KeyInfo.route) {
                 KeyInfoScreen()

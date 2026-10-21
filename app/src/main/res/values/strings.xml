@@ -48,4 +48,18 @@
     <string name="market_active_coins">Active coins</string>
     <string name="market_exchanges">Exchanges</string>
     <string name="nav_market">Market</string>
+
+
+    <!-- Convert -->
+    <string name="nav_convert">Convert</string>
+    <string name="convert_title">Convert</string>
+    <string name="convert_you_have">You have</string>
+    <string name="convert_you_get">You get</string>
+    <string name="convert_same_amount_in">Same amount in</string>
+    <string name="convert_choose_coin">Choose a coin</string>
+    <string name="convert_search_placeholder">Search</string>
+    <string name="convert_enter_number">Enter a number</string>
+    <string name="convert_rate_line">1 %1$s = %2$s</string>
+    <string name="convert_credits_note">Rates cost %1$d API credits each time you pick a coin or refresh. Changing the amount is free.</string>
+
 </resources>

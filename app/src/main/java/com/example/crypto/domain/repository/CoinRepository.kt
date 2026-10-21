@@ -4,4 +4,5 @@ import com.example.crypto.domain.model.Coin
 
 interface CoinRepository {
     suspend fun getCoinList(): Result<List<Coin>>
+    fun getCachedCoins(): List<Coin>?
 }

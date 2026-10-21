@@ -6,6 +6,8 @@ import com.example.crypto.data.remote.dto.FearGreedHistoricalResponseDto
 import com.example.crypto.data.remote.dto.FearGreedLatestResponseDto
 import com.example.crypto.data.remote.dto.GlobalMetricsResponseDto
 import com.example.crypto.data.remote.dto.KeyInfoResponseDto
+import com.example.crypto.data.remote.dto.PriceConversionResponseDto
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -35,4 +37,11 @@ interface CoinMarketCapApi {
 
     @GET("v1/altcoin-season-index/latest")
     suspend fun getAltcoinSeasonIndex(): AltcoinSeasonResponseDto
+
+    @GET("v2/tools/price-conversion")
+    suspend fun getPriceConversion(
+        @Query("amount") amount: Int = 1,
+        @Query("id") id: Int,
+        @Query("convert") convert: String
+    ): Response<PriceConversionResponseDto>
 }
