@@ -34,8 +34,15 @@ class CoinListViewModel @Inject constructor(
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true, error = null) }
             getCoinListUseCase()
-                .onSuccess { coins ->
-                    _state.update { it.copy(coins = coins, isLoading = false) }
+                .onSuccess { result ->
+                    _state.update {
+                        it.copy(
+                            coins = result.coins,
+                            isLoading = false,
+                            isFromCache = result.isFromCache,
+                            cacheUpdatedAt = result.updatedAt
+                        )
+                    }
                 }
                 .onFailure { e ->
                     _state.update { it.copy(error = e.message, isLoading = false) }

@@ -48,6 +48,10 @@ import com.example.crypto.presentation.common.formatCompactUsd
 import com.example.crypto.presentation.common.formatPercent
 import kotlin.math.cos
 import kotlin.math.sin
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CloudOff
+import com.example.crypto.presentation.common.formatTimestamp
+import androidx.compose.material3.Icon
 
 private val PositiveColor = Color(0xFF16C784)
 private val NegativeColor = Color(0xFFEA3943)
@@ -79,7 +83,33 @@ fun MarketScreen(viewModel: MarketViewModel = hiltViewModel()) {
                 fontWeight = FontWeight.Bold
             )
         }
-
+        if (state.isFromCache) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 6.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.5f))
+                    .padding(horizontal = 12.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    Icons.Filled.CloudOff,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp),
+                    tint = MaterialTheme.colorScheme.onTertiaryContainer
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = stringResource(
+                        R.string.offline_banner,
+                        state.cacheUpdatedAt?.let { formatTimestamp(it) } ?: "—"
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onTertiaryContainer
+                )
+            }
+        }
         when {
             state.isLoading && state.overview == null -> {
                 Box(modifier = Modifier.fillMaxSize()) {

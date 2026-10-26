@@ -9,6 +9,6 @@ class GetConvertibleCoinsUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(): Result<List<Coin>> {
         repository.getCachedCoins()?.let { return Result.success(it) }
-        return repository.getCoinList()
+        return repository.getCoinList().map { it.coins }
     }
 }

@@ -27,8 +27,17 @@ class MarketViewModel @Inject constructor(
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true, error = null) }
             getMarketOverviewUseCase()
-                .onSuccess { overview -> _state.update { it.copy(overview = overview, isLoading = false) } }
+                .onSuccess { result ->
+                    _state.update {
+                        it.copy(
+                            overview = result.overview,
+                            isLoading = false,
+                            isFromCache = result.isFromCache,
+                            cacheUpdatedAt = result.updatedAt
+                        )
+                    }
+                }
                 .onFailure { e -> _state.update { it.copy(error = e.message, isLoading = false) } }
         }
     }
-}
+    }

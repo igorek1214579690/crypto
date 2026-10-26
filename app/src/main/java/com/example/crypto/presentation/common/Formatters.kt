@@ -39,3 +39,8 @@ fun formatPercent(value: Double?): String {
     val sign = if (value >= 0) "+" else ""
     return String.format(Locale.US, "%s%.2f", sign, value)
 }
+
+fun formatTimestamp(millis: Long): String {
+    val sdf = java.text.SimpleDateFormat("dd.MM HH:mm", Locale.getDefault())
+    return sdf.format(java.util.Date(millis))
+}

@@ -47,9 +47,18 @@ import com.example.crypto.presentation.common.formatCompactNumber
 import com.example.crypto.presentation.common.formatCompactUsd
 import com.example.crypto.presentation.common.formatPercent
 import com.example.crypto.presentation.common.formatPrice
+import androidx.compose.foundation.background
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CloudOff
+import androidx.compose.material3.Icon
+import androidx.compose.ui.res.stringResource
+
+import com.example.crypto.presentation.common.formatTimestamp
 
 private val PositiveColor = Color(0xFF16C784)
 private val NegativeColor = Color(0xFFEA3943)
+
+
 
 @Composable
 fun CoinListScreen(
@@ -71,6 +80,33 @@ fun CoinListScreen(
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
+        }
+        if (state.isFromCache) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 6.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.5f))
+                    .padding(horizontal = 12.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    Icons.Filled.CloudOff,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp),
+                    tint = MaterialTheme.colorScheme.onTertiaryContainer
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = stringResource(
+                        R.string.offline_banner,
+                        state.cacheUpdatedAt?.let { formatTimestamp(it) } ?: "—"
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onTertiaryContainer
+                )
+            }
         }
 
         when {
@@ -154,6 +190,7 @@ fun CoinCard(coin: Coin, expanded: Boolean, onClick: () -> Unit) {
                     PercentPill(value = coin.percentChange24h)
                 }
             }
+
 
             AnimatedVisibility(visible = expanded) {
                 Column(modifier = Modifier.padding(top = 12.dp)) {

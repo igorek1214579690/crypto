@@ -59,5 +59,6 @@
     <string name="convert_search_placeholder">Поиск</string>
     <string name="convert_enter_number">Введите число</string>
     <string name="convert_rate_line">1 %1$s = %2$s</string>
+    <string name="offline_banner">Показаны сохранённые данные, обновлено %1$s</string>
     <string name="convert_credits_note">Курсы стоят %1$d кредитов API при каждом выборе монеты или обновлении. Изменение суммы бесплатно.</string>
 </resources>
