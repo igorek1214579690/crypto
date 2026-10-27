@@ -52,6 +52,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CloudOff
 import com.example.crypto.presentation.common.formatTimestamp
 import androidx.compose.material3.Icon
+import com.example.crypto.presentation.common.ErrorFullScreen
 
 private val PositiveColor = Color(0xFF16C784)
 private val NegativeColor = Color(0xFFEA3943)
@@ -117,12 +118,12 @@ fun MarketScreen(viewModel: MarketViewModel = hiltViewModel()) {
                 }
             }
             state.error != null && state.overview == null -> {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    Text(
-                        text = stringResource(R.string.error_message, state.error ?: ""),
-                        modifier = Modifier.align(Alignment.Center)
-                    )
-                }
+                ErrorFullScreen(
+                    kind = state.error!!,
+                    onRetry = { viewModel.load() }
+                )
+
+
             }
             state.overview != null -> {
                 val overview = state.overview!!

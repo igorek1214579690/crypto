@@ -2,6 +2,7 @@ package com.example.crypto.presentation.keyinfo
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import com.example.crypto.presentation.common.ErrorFullScreen
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -39,10 +40,11 @@ fun KeyInfoScreen(
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
             state.error != null -> {
-                Text(
-                    text = stringResource(R.string.error_message, state.error.orEmpty()),
-                    modifier = Modifier.align(Alignment.Center)
+                ErrorFullScreen(
+                    kind = state.error!!,
+                    onRetry = { viewModel.loadKeyInfo() }
                 )
+
             }
             state.keyInfo != null -> {
                 KeyInfoContent(info = state.keyInfo!!)

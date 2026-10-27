@@ -62,4 +62,12 @@
     <string name="convert_rate_line">1 %1$s = %2$s</string>
     <string name="convert_credits_note">Rates cost %1$d API credits each time you pick a coin or refresh. Changing the amount is free.</string>
     <string name="offline_banner">Showing saved data, updated %1$s</string>
+
+
+    <!-- Errors -->
+    <string name="error_no_internet">No internet connection. Check your connection and try again.</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_dialog_title">Oops!</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_dismiss">Close</string>
 </resources>

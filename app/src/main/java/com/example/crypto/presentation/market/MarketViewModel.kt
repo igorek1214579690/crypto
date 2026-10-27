@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.example.crypto.presentation.common.classifyError
 
 @HiltViewModel
 class MarketViewModel @Inject constructor(
@@ -37,7 +38,6 @@ class MarketViewModel @Inject constructor(
                         )
                     }
                 }
-                .onFailure { e -> _state.update { it.copy(error = e.message, isLoading = false) } }
-        }
-    }
-    }
+                .onFailure { e -> _state.update { it.copy(error = classifyError(e), isLoading = false) } }
+    }}}
+

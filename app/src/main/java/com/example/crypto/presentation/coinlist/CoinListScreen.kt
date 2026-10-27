@@ -52,6 +52,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CloudOff
 import androidx.compose.material3.Icon
 import androidx.compose.ui.res.stringResource
+import com.example.crypto.presentation.common.ErrorFullScreen
 
 import com.example.crypto.presentation.common.formatTimestamp
 
@@ -116,13 +117,13 @@ fun CoinListScreen(
                 }
             }
             state.error != null -> {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    Text(
-                        text = stringResource(R.string.error_message, state.error ?: ""),
-                        modifier = Modifier.align(Alignment.Center)
-                    )
-                }
+                ErrorFullScreen(
+                    kind = state.error!!,
+                    onRetry = { viewModel.onIntent(CoinListIntent.Refresh) }
+                )
             }
+
+
             else -> {
                 LazyColumn(
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),

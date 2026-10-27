@@ -28,6 +28,7 @@ import androidx.compose.material.icons.filled.SwapVert
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.FilterChip
@@ -61,17 +62,17 @@ import coil.compose.AsyncImage
 import com.example.crypto.R
 import com.example.crypto.domain.model.Coin
 import com.example.crypto.domain.model.ConvertCurrencies
+import com.example.crypto.presentation.common.ErrorDialog
+import com.example.crypto.presentation.common.ErrorFullScreen
 import com.example.crypto.presentation.common.formatCryptoAmount
 import com.example.crypto.presentation.common.formatCurrencyValue
-import androidx.compose.material3.ExperimentalMaterial3Api
-
-private val NegativeColor = Color(0xFFEA3943)
 
 private fun parseAmount(text: String): Double? = text.replace(',', '.').toDoubleOrNull()
 
 @Composable
 fun ConvertScreen(viewModel: ConvertViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
+    val coinsError = state.coinsError
 
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
@@ -100,13 +101,11 @@ fun ConvertScreen(viewModel: ConvertViewModel = hiltViewModel()) {
                     CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                 }
             }
-            state.coinsError != null && state.coins.isEmpty() -> {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    Text(
-                        text = stringResource(R.string.error_message, state.coinsError ?: ""),
-                        modifier = Modifier.align(Alignment.Center)
-                    )
-                }
+            coinsError != null && state.coins.isEmpty() -> {
+                ErrorFullScreen(
+                    kind = coinsError,
+                    onRetry = { viewModel.onIntent(ConvertIntent.LoadCoins) }
+                )
             }
             else -> {
                 ConvertContent(state = state, viewModel = viewModel)
@@ -124,6 +123,20 @@ private fun ConvertContent(state: ConvertState, viewModel: ConvertViewModel) {
     val coin = state.selectedCoin
     val amount = parseAmount(state.amountText)
     val rate = state.rates[state.selectedCurrency]
+    val ratesError = state.ratesError
+
+    var dismissedError by remember { mutableStateOf<com.example.crypto.presentation.common.ErrorKind?>(null) }
+
+    if (ratesError != null && ratesError != dismissedError) {
+        ErrorDialog(
+            kind = ratesError,
+            onRetry = {
+                dismissedError = null
+                viewModel.onIntent(ConvertIntent.Refresh)
+            },
+            onDismiss = { dismissedError = ratesError }
+        )
+    }
 
     val result: Double? = when {
         amount == null || !state.isAmountValid -> null
@@ -229,43 +242,34 @@ private fun ConvertContent(state: ConvertState, viewModel: ConvertViewModel) {
                     Spacer(modifier = Modifier.height(8.dp))
                 }
 
-                when {
-                    state.isLoadingRates -> {
-                        LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
-                    }
-                    state.ratesError != null && state.rates.isEmpty() -> {
-                        Text(
-                            text = stringResource(R.string.error_message, state.ratesError),
-                            color = NegativeColor
-                        )
-                    }
-                    else -> {
-                        val resultText = if (result != null) {
-                            if (state.direction == ConvertDirection.COIN_TO_CURRENCY) {
-                                formatCurrencyValue(state.selectedCurrency, result)
-                            } else {
-                                formatCryptoAmount(result, coin?.symbol ?: "")
-                            }
+                if (state.isLoadingRates) {
+                    LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                } else {
+                    val resultText = if (result != null) {
+                        if (state.direction == ConvertDirection.COIN_TO_CURRENCY) {
+                            formatCurrencyValue(state.selectedCurrency, result)
                         } else {
-                            stringResource(R.string.value_placeholder)
+                            formatCryptoAmount(result, coin?.symbol ?: "")
                         }
+                    } else {
+                        stringResource(R.string.value_placeholder)
+                    }
+                    Text(
+                        text = resultText,
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    if (rate != null && coin != null) {
+                        Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = resultText,
-                            style = MaterialTheme.typography.headlineMedium,
-                            fontWeight = FontWeight.SemiBold
+                            text = stringResource(
+                                R.string.convert_rate_line,
+                                coin.symbol,
+                                formatCurrencyValue(state.selectedCurrency, rate)
+                            ),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
-                        if (rate != null && coin != null) {
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                text = stringResource(
-                                    R.string.convert_rate_line,
-                                    coin.symbol,
-                                    formatCurrencyValue(state.selectedCurrency, rate)
-                                ),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
                     }
                 }
             }
@@ -350,6 +354,7 @@ private fun CoinButton(coin: Coin, onClick: () -> Unit) {
         Text(" ▾")
     }
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun CoinPickerSheet(state: ConvertState, viewModel: ConvertViewModel) {

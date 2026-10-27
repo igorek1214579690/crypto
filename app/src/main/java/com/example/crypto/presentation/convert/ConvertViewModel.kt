@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.example.crypto.presentation.common.classifyError
 
 private const val REFRESH_COOLDOWN_MS = 30_000L
 private val AMOUNT_REGEX = Regex("^[0-9]*[.,]?[0-9]*$")
@@ -61,9 +62,7 @@ class ConvertViewModel @Inject constructor(
                     _state.update { it.copy(coins = coins, isLoadingCoins = false, selectedCoin = firstCoin) }
                     firstCoin?.let { loadRates(it.id) }
                 }
-                .onFailure { e ->
-                    _state.update { it.copy(isLoadingCoins = false, coinsError = e.message) }
-                }
+                .onFailure { e -> _state.update { it.copy(isLoadingRates = false, ratesError = classifyError(e)) } }
         }
     }
 
@@ -80,9 +79,7 @@ class ConvertViewModel @Inject constructor(
                 .onSuccess { rates ->
                     _state.update { it.copy(rates = rates.mapValues { (_, v) -> v.price }, isLoadingRates = false) }
                 }
-                .onFailure { e ->
-                    _state.update { it.copy(isLoadingRates = false, ratesError = e.message) }
-                }
+                .onFailure { e -> _state.update { it.copy(isLoadingCoins = false, coinsError = classifyError(e)) } }
         }
     }
 
