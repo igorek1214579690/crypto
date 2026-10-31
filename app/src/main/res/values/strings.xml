@@ -3,14 +3,12 @@
 
     <!-- Common -->
     <string name="value_placeholder">—</string>
-    <string name="error_message">Error: %1$s</string>
 
     <!-- Navigation -->
     <string name="nav_coins">Coins</string>
     <string name="nav_key_info">Key info</string>
 
     <!-- Coin list -->
-    <string name="coin_name_symbol">%1$s (%2$s)</string>
     <string name="coin_price_usd">$%1$s</string>
     <string name="coin_percent_change">%1$s%%</string>
     <string name="coin_list_title">Coins</string>
@@ -23,13 +21,29 @@
     <string name="label_pairs">Pairs</string>
     <string name="label_supply">Supply %1$s / %2$s</string>
 
-    <!-- Key info (About) -->
-    <string name="key_info_monthly_reset">Credit limit monthly reset: %1$s</string>
-    <string name="key_info_monthly_limit">Credit monthly limit: %1$s</string>
-    <string name="key_info_current_day">Current day:</string>
-    <string name="key_info_current_month">Current month:</string>
-    <string name="key_info_credits_used">Credits used: %1$s</string>
-    <string name="key_info_credits_left">Credits left: %1$s</string>
+    <!-- Key info -->
+    <string name="key_info_title">Key info</string>
+    <string name="key_info_credits_left_label">credits left</string>
+    <string name="key_info_of_month_limit">of %1$s this month</string>
+    <string name="key_info_resets">Resets in %1$s</string>
+    <string name="key_info_resets_raw">Resets: %1$s</string>
+    <string name="key_info_resets_soon">Resets in less than an hour</string>
+    <plurals name="key_info_days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <plurals name="key_info_hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+    <string name="key_info_today">Today</string>
+    <string name="key_info_used">Used %1$s</string>
+    <string name="key_info_left">Left %1$s</string>
+    <string name="key_info_month_used">This month used</string>
+    <string name="key_info_percent_of_limit">%1$d%% of limit</string>
+    <string name="key_info_rate_limit">Rate limit</string>
+    <string name="key_info_per_minute">/min</string>
+    <string name="key_info_requests">requests per minute</string>
 
     <!-- Market -->
     <string name="market_title">Market</string>
@@ -69,5 +83,6 @@
     <string name="error_generic">Something went wrong. Please try again.</string>
     <string name="error_dialog_title">Oops!</string>
     <string name="action_retry">Retry</string>
+    <string name="action_refresh">Refresh</string>
     <string name="action_dismiss">Close</string>
 </resources>

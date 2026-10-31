@@ -3,14 +3,12 @@
 
     <!-- Common -->
     <string name="value_placeholder">—</string>
-    <string name="error_message">Ошибка: %1$s</string>
 
     <!-- Navigation -->
     <string name="nav_coins">Монеты</string>
     <string name="nav_key_info">О ключе</string>
 
     <!-- Coin list -->
-    <string name="coin_name_symbol">%1$s (%2$s)</string>
     <string name="coin_price_usd">$%1$s</string>
     <string name="coin_percent_change">%1$s%%</string>
     <string name="coin_list_title">Монеты</string>
@@ -23,13 +21,33 @@
     <string name="label_pairs">Пары</string>
     <string name="label_supply">В обороте %1$s / %2$s</string>
 
-    <!-- Key info (About) -->
-    <string name="key_info_monthly_reset">Обновление месячного лимита: %1$s</string>
-    <string name="key_info_monthly_limit">Месячный лимит кредитов: %1$s</string>
-    <string name="key_info_current_day">Сегодня:</string>
-    <string name="key_info_current_month">Этот месяц:</string>
-    <string name="key_info_credits_used">Использовано кредитов: %1$s</string>
-    <string name="key_info_credits_left">Осталось кредитов: %1$s</string>
+    <!-- Key info -->
+    <string name="key_info_title">О ключе</string>
+    <string name="key_info_credits_left_label">кредитов осталось</string>
+    <string name="key_info_of_month_limit">из %1$s в этом месяце</string>
+    <string name="key_info_resets">Сброс через %1$s</string>
+    <string name="key_info_resets_raw">Сброс: %1$s</string>
+    <string name="key_info_resets_soon">Сброс меньше чем через час</string>
+    <plurals name="key_info_days">
+        <item quantity="one">%d день</item>
+        <item quantity="few">%d дня</item>
+        <item quantity="many">%d дней</item>
+        <item quantity="other">%d дня</item>
+    </plurals>
+    <plurals name="key_info_hours">
+        <item quantity="one">%d час</item>
+        <item quantity="few">%d часа</item>
+        <item quantity="many">%d часов</item>
+        <item quantity="other">%d часа</item>
+    </plurals>
+    <string name="key_info_today">Сегодня</string>
+    <string name="key_info_used">Использовано %1$s</string>
+    <string name="key_info_left">Осталось %1$s</string>
+    <string name="key_info_month_used">Использовано за месяц</string>
+    <string name="key_info_percent_of_limit">%1$d%% от лимита</string>
+    <string name="key_info_rate_limit">Лимит запросов</string>
+    <string name="key_info_per_minute">/мин</string>
+    <string name="key_info_requests">запросов в минуту</string>
 
     <!-- Market -->
     <string name="market_title">Рынок</string>
@@ -49,6 +67,7 @@
     <string name="market_exchanges">Бирж</string>
     <string name="nav_market">Рынок</string>
 
+
     <!-- Convert -->
     <string name="nav_convert">Конвертер</string>
     <string name="convert_title">Конвертер</string>
@@ -59,13 +78,15 @@
     <string name="convert_search_placeholder">Поиск</string>
     <string name="convert_enter_number">Введите число</string>
     <string name="convert_rate_line">1 %1$s = %2$s</string>
-    <string name="offline_banner">Показаны сохранённые данные, обновлено %1$s</string>
     <string name="convert_credits_note">Курсы стоят %1$d кредитов API при каждом выборе монеты или обновлении. Изменение суммы бесплатно.</string>
+    <string name="offline_banner">Показаны сохранённые данные, обновлено %1$s</string>
+
 
     <!-- Errors -->
     <string name="error_no_internet">Нет подключения к интернету. Проверьте соединение и попробуйте снова.</string>
     <string name="error_generic">Что-то пошло не так. Попробуйте ещё раз.</string>
     <string name="error_dialog_title">Упс!</string>
     <string name="action_retry">Повторить</string>
+    <string name="action_refresh">Обновить</string>
     <string name="action_dismiss">Закрыть</string>
 </resources>
